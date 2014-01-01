@@ -1,0 +1,272 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: VPL (LogicIO RTCU)
+scopeName: source.vpl
+fileTypes: [inc, vpl]
+uuid: 705d1522-e018-4330-873d-9297777000d7
+repository:
+
+  # Single- and Multi-line comments
+  comments:
+    patterns:
+    # Single-line comment
+    - name: comment.line.vpl
+      match: '(\/\/).*$'
+      captures:
+        '1': {name: punctuation.definition.comment.vpl}
+
+    # Multi-line comment
+    - name: comment.block.vpl
+      begin: '\/\*'
+      end: '\*\/'
+      captures:
+        '0': {name: punctuation.definition.comment.vpl}
+
+  # Matches all strings inside ""
+  strings:
+    patterns:
+    - name: string.quoted.double.vpl
+      match: '\"([^"]*)\"'
+      captures:
+        '1': {name: string.quoted.double.vpl}
+
+  # Language Reserved Keyword
+  vpl-keywords:
+    patterns:
+    - name: keyword.reserved.vpl
+      match: '\b(ACCESS|ADDR|ALIGN|AND|ARRAY|ASYNC|AUTO|BEGIN|BOOL|BY|CASE|CHANNEL|CLASS|CONFIG|CONFIGURATION|CONSTANT|DINT|DO|(DYNAMIC)|ELSE|ELSIF|END|END_CASE|END_FOR|END_FUNCTION|END_IF|END_PROGRAM|END_REPEAT|END_STRUCT_BLOCK|END_TASK|END_THREAD_BLOCK|END_VAR|END_WHILE|EXIT|EXTCALL|F_EDGE|FALSE|FILE|FLOAT|FLOATB|FOR|FUNCTION|FUNCTION_BLOCK|GOTO|HIDE|IF|IMAGE|INCLUDE|INT|INTERVAL|LABEL|__LINE__|MOD|MUTABLE|MUTEX|__NOP__|NOT|NOAUTOCALC|OF|OFF|ON|OR|PRIORITY|PROGRAM|PTR|R_EDGE|REPEAT|RETURN|SCAN|SEMAPHORE|SINT|SIZEOF|STRING|STRUCT_BLOCK|TASK|THEN|THREAD_BLOCK|TO|TRUE|UNTIL|UPDATEIO|UPDATEOUT|VAR|VAR_INPUT|VAR_OUTPUT|VOICE|WHILE|XOR)\b'
+
+  # Conditional Compilation
+  conditional-compilation:
+    patterns:
+    - name: keyword.define.vpl
+      match: '\#DEFINE(.*)$'
+      captures:
+        '1': {name: constant.character.escape.define.value.vpl}
+    - name: keyword.undefine.vpl
+      match: '\#UNDEFINE'
+    - name: keyword.ifdef.vpl
+      match: '\#IFDEF'
+    - name: keyword.endif.vpl
+      match: '\#END_IF'
+    - name: keyword.else.vpl
+      match: '\#ELSE'
+
+  # Standard Functions Library
+  vpl-sfl-keywords:
+    patterns:
+    # Binary operation functions
+    - name: keyword.sfl.binary.operation.vpl
+      match: '\b(shr32|shr16|shr8|shl32|shl16|shl8|bcd_to_sint|bcd_to_int|bcd_to_dint|sint_to_bcd|int_to_bcd|dint_to_bcd)\b'
+
+    # Calculation routines
+    - name: keyword.sfl.calculation.routines.vpl
+      match: '\b(abs|min|max|VolumeHorizontalTank|VolumeVerticalTank|crcCalculate|random|calcPow|rdDecrypt128|rdEncrypt128)\b'
+
+    # Channel functions
+    - name: keyword.sfl.channel.functions.vpl
+      match: '\b(chInit|chDestroy|chStatus|chRead|chWrite|chPeek)\b'
+
+    # Counter functionblocks
+    - name: keyword.sfl.counter.function.blocks.vpl
+      match: '\b(CTD|CTU|CTUD|PCT)\b'
+
+    # Datalogger
+    - name: keyword.sfl.datalogger.vpl
+      match: '\b(logInitialize|logClear|logNext|logPrev|logFirst|logLast|logNumOfRecords|logMaxNumOfRecords|logValuesPerRecord|logIsInitialized|logWrite|logReWrite|logReWriteTag|logRead|logDestroy|logGotoLinsec|logSeek)\b'
+
+    # Debugger functions
+    - name: keyword.sfl.debugger.vpl
+      match: '\b(DebugMsg|DebugFmt)\b'
+
+    # Edge triggers
+    - name: keyword.sfl.edge.triggers.vpl
+      match: '\b(R_TRIG|F_TRIG|RF_TRIG)\b'
+
+    # Trigonometric functions
+    - name: keyword.sfl.math.trig.vpl
+      match: '\b(cos|acos|sin|asin|tan|atan|atan2)\b'
+
+    # Exponential and logarithmic functions
+    - name: keyword.sfl.math.log.vpl
+      match: '\b(exp|exp2|frexp|ldexp|log|log2|log10|modf|sqrt)\b'
+
+    # Rounding functions
+    - name: keyword.sfl.math.round.vpl
+      match: '\b(ceil|floor)\b'
+
+    # Other functions
+    - name: keyword.sfl.math.other.vpl
+      match: '\b(fabs|fmin|fmax|IsInf|IsNaN)\b'
+
+    # Conversion functions
+    - name: keyword.sfl.math.conversion.vpl
+      match: '\b(floatToStr|strToFloat|degToRad|radToDeg|degToPosition|positionToDeg)\b'
+
+    # Miscellaneous
+    - name: keyword.sfl.misc.vpl
+      match: '\b(Debounce|memcpy|RS|SR)\b'
+
+    # Mutex functions
+    - name: keyword.sfl.mutex.functions.vpl
+      match: '\b(mxInit|mxDestroy|mxStatus|mxLock|mxUnlock)\b'
+
+    # Persistent memory
+    - name: keyword.sfl.persistent.memory.vpl
+      match: '\b(SaveString|LoadString|SaveData|LoadData|SaveStringF|LoadStringF|SaveDataF|LoadDataF|SaveStringX|LoadStringX|SaveDataX|LoadDataX|GetFlashXSize)\b'
+
+    # Real Time Clock
+    - name: keyword.sfl.real.time.clock.vpl
+      match: '\b(clockGet|clockNow|clockSet|clockTimeToLinsec|clockLinsecToTime|clockAlarm|clockDayTimer|clockWeekTimer)\b'
+
+    # Semaphore functions
+    - name: keyword.sfl.semaphore.functions.vpl
+      match: '\b(semInit|semDestroy|semWait|semSignal|semValue)\b'
+
+    # String handling functions
+    - name: keyword.sfl.string.handling.functions.vpl
+      match: '\b(strFormat|strGetValues|strGetStrings|strToInt|strToDint|strToSint|strCompare|strConcat|strLeft|strRight|strMid|strLen|strLookup|strFind|strToken|strRemoveSpaces|sintToStr|intToStr|dintToStr|strToMemory|strFromMemory|strEncode64|strDecode64|strMemoryUsage)\b'
+
+    # Timer functions
+    - name: keyword.sfl.timer.functions.vpl
+      match: '\b(TOF|TON|TP|TPERIOD)\b'
+
+  # Platform Support Functions
+  vpl-psf-keywords:
+    patterns:
+    # 3D Accelerometer
+    - name: keyword.psf.accelerometer.vpl
+      match: '\b(accOpen|accClose|accVector|accVectorToForce|accVectorToAngles|accWaitEvent|accSetAccelerationEvent|accAccelerationEvent|accSetShockEvent|accShockEvent|accLoggerSetConfig|accLoggerGetConfig|accLoggerStart|accLoggerStop|accLoggerLevel|accLoggerRead|accLoggerToMem)\b'
+
+    # Battery Functions
+    - name: keyword.psf.battery.vpl
+      match: '\b(batChargerEnable|batIsCharging|batVoltageIsLow|batModuleMounted|batSimpleCharger|batChargerVoltage|batPowerLevel|batConsumption|batConsumptionAvg|batConsumptionClear|batConsumptionEnable|batConsumptionTotal)\b'
+
+    # Board related functions
+    - name: keyword.psf.board.vpl
+      match: '\b(boardSupplyVoltage|boardSupplyType|boardTemperature|boardVersion|boardType|boardSerialNumber|boardReset|boardGetProfile|boardGetProfileX|boardGetStatistics|boardWatchdog|boardSetPassword|boardSetPasswordAlt|boardClearPassword|boardSetFaultReset|boardBuzzer|boardBuzzerFrequency|boardDCOut|boardDCOut2|boardSetServicePortAlt|boardFaultLogGet|boardFaultLogGetDebug|boardFaultLogClear|boardEnableS0|boardSetOption|boardRequestOption)\b'
+
+    # Bluetooth Smart Antenna
+    - name: keyword.psf.bluetooth.vpl
+      match: '\b(btOpen|btClose|btIsOpen|btSearch|btGetDeviceAddress|btGetDeviceName|btGetDeviceType|btConnect|btListen|btDisconnect|btConnection|btSignalLevel|btSendData|btReceiveData|btSetPin|btHsOpen|btHsClose|btHsConnected|btHsRingAccept|btHsRingReject|btPairClear|btPairClearAll|btSetLED)\b'
+
+    # Camera module
+    - name: keyword.psf.camera.vpl
+      match: '\b(camOpen|camClose|camPresent|camSnapshot|camSnapshotToFile)\b'
+
+    # CAN functions
+    - name: keyword.psf.can.vpl
+      match: '\b(canOpen|canClose|canLoopBackMode|canSendMessage|canReceiveMessage|canFilterCreate|canFilterCreateOnce|canFilterCreateX|canFilterDestroy|canFilterStatus|canFlush|canBufferLevel|canLoggerSetup|canLoggerStart|canLoggerStop|canLoggerLevel|canLoggerRead|canLoggerToMemory|canFMSFilterCreate|canFMSGetPGN)\b'
+
+    # Display functions
+    - name: keyword.psf.display.vpl
+      match: '\b(displayBox|displayCircle|displayClear|displayDefineChar|displayGetKey|displayImage|displayLine|displayNumber|displayPoint|displayPower|displayString|displayXY)\b'
+
+    # Functions for DTMF interaction
+    - name: keyword.psf.dtmf.vpl
+      match: '\b(dtmfGetKey|dtmfGetNumber)\b'
+
+    # Ethernet/Wi-Fi module
+    - name: keyword.psf.ethernet.vpl
+      match: '\b(ethOpen|ethClose|ethPresent|ethConnect|ethConnection|ethDisconnect|ethSend|ethReceive)\b'
+
+    # File system functions
+    - name: keyword.psf.filesystem.vpl
+      match: '\b(fsMediaPresent|fsMediaWriteProtected|fsMediaOpen|fsMediaClose|fsMediaQuickFormat|fsMediaEject|fsStatusLEDEnable|fsDirCreate|fsDirChange|fsDirCurrent|fsDirCatalog|fsDirDelete|fsFileCreate|fsFileOpen|fsFileExists|fsFileRename|fsFileMove|fsFileDelete|fsFileStatus|fsFileGetCreateTime|fsFileGetSize|fsFileSeek|fsFilePosition|fsFileRead|fsFileReadString|fsFileWrite|fsFileWriteString|fsFileWriteStringNL|fsFileClose|fsFileFlush)\b'
+
+    # FTP Functions
+    - name: keyword.psf.ftp.vpl
+      match: '\b(ftpOpen|ftpClose|ftpConnect|ftpConnected|ftpDisconnect|ftpCancel|ftpLastResponse|ftpDirChange|ftpDirCreate|ftpDirCurrent|ftpDirDelete|ftpDirRename|ftpDirCatalogGet|ftpDirCatalog|ftpFileDelete|ftpFileReceive|ftpFileRename|ftpFileSend|ftpFileSize)\b'
+
+    # Gateway functions
+    - name: keyword.psf.gateway.vpl
+      match: '\b(gwConnected|sockSetGWParm|sockGetGWParm|gwEnabled|gwPacketMode|gwReceivePacket|gwReceivePacketDone|gwSendPacket|gwSetMedia|gwTimeGet)\b'
+
+    # GPRS functions
+    - name: keyword.psf.gprs.vpl
+      match: '\b(gprsOpen|gprsClose|gprsConnected|gprsSetModemInit|gprsGetMonitorParm|gprsSetMonitorParm)\b'
+
+    # GPS Receiver
+    - name: keyword.psf.gps.vpl
+      match: '\b(gpsPower|gpsFix|gpsPointInPolygon|gpsEnableNMEA|gpsDistance|gpsDistanceX|gpsGetAntennaStatus|gpsNMEA|gpsSetSBAS|gpsGetSBAS|gpsSetSpeedThreshold|gpsUpdateFreq|gpsPositionToUtm|gpsUtmToPosition|gpsSemicircleToUtm|gpsUtmToSemicircle)\b'
+
+    # GSM functions
+    - name: keyword.psf.gsm.vpl
+      match: '\b(gsmAnswer|gsmOffHook|gsmHangup|gsmIncomingCall|gsmIncomingSMS|gsmConnected|gsmSendSMS|gsmMakeCall|gsmMakeCallX|gsmPower|gsmPowerLP|gsmSetAntennaMode|gsmSignalLevel|gsmSendPDU|gsmIncomingPDU|gsmSetListOfCallers|gsmGetListOfCallers|gsmGetIMEI|gsmGetIMSI|gsmGetICCID|gsmSendDTMF|gsmGetProviderList|gsmSetProvider|gsmSetPIN|gsmSetSMSSCN|gsmHeadset|gsmCheckSMS|gsmGetLAC|gsmGetCellID|gsmGetStatus|gsmGetCurrentProvider|gsmGetHomeProvider|gsmSIMPresent|gsmSIMLocked|gsmModemMode|gsmSendFlashSMS|gsmSimSetPIN|gsmNetworkTime)\b'
+
+    # Mobile Data Terminal
+    - name: keyword.psf.mobile.data.terminal.vpl
+      match: '\b(mdtOpen|mdtPower|mdtStandby|mdtWrite|mdtGotoXY|mdtCurrentX|mdtCurrentY|mdtScrollDown|mdtScrollUp|mdtGetKey|mdtClear|mdtClearLine|mdtCursor|mdtBacklight|mdtBeep|mdtContrast|mdtDefineChar|mdtProfile)\b'
+
+    # Miscellaneous Functions
+    - name: keyword.psf.misc.vpl
+      match: '\b(Sleep|DeepSleep|PowerDown|HostConnected|memioWrite|memioRead|memioWriteX|memioReadX)\b'
+
+    # MODBUS communication
+    - name: keyword.psf.modbus.vpl
+      match: '\b(ioDeviceEnable|ioGetStatus|ioSetMode|ioSynchronize|ioWaitException|modbusOpen|modbusReceive|modbusSend|modbusWaitData)\b'
+
+    # MQTT communication
+    - name: keyword.psf.mqtt.vpl
+      match: '\b(mqttOpen|mqttClose|mqttIsConnected|mqttStatus|mqttPublish|mqttSubscribe|mqttUnsubscribe|mqttWaiEvent|mqttReceive)\b'
+
+    # Navigation
+    - name: keyword.psf.navigation.vpl
+      match: '\b(navOpen|navClose|navPresent|navVersion|navGetAPILevel|navDeviceSerial|navWaitEvent|navSetUIText|navDeleteData|navFix|navUserIDAuthenticate|navUserIDReceive|navUserIDReceiveX|navUserIDRequest|navUserIDSet|navUserStatusDefine|navUserStatusDelete|navUserStatusReceive|navUserStatusRcvX|navUserStatusRequest|navUserStatusSet|navMessageSend|navMessageDelete|navMessageStatusReceive|navMessageStatusRequest|navMessageReceive|navMessageReceiveX|navMessageQuickDefine|navMessageQuickDelete|navMessageReplyDefine|navMessageReplyDelete|navMessageReplyReceive|navStopSet|navStopReceive|navStopRequest|navStopSort|navStopIndexSet|navStopSetActive|navStopSetDone|navStopDelete|navAutoArrival|navETAReceive|navETARequest|navETAAutoSet|navGPITransfer|navGPIProgressReceive|navGPIRequestID|navGPIReceiveID|navWaypointSet|navWaypointDelete|navWaypointDeleteByCat|navPositionToSemicircles|navSemicirclesToPosition)\b'
+
+    # Navigation and Messaging Platform
+    - name: keyword.psf.nmp.vpl
+      match: '\b(nmpPresent|nmpUpdate|nmpUpdateProgressReceive|nmpPower|nmpStopPopup|nmpStopClose|nmpPlaySound|nmpShowDialog|nmpRemoveDialog|nmpDialogClickReceive|nmpGetHardwareID|nmpHideMenus|nmpHomePos|nmpSetVolume|nmpLCDBrightness|nmpSetLED|nmpHardwareButtonsEnable|nmpHardwareButtonPressedReceive|nmpCameraOpen|nmpCameraClose|nmpRGBToDint|nmpButtonsDefine|nmpButtonCreate|nmpButtonEnable|nmpButtonVisible|nmpButtonWidth|nmpButtonColor|nmpButtonText|nmpButtonFlash|nmpButtonConfirm|nmpButtonPressedReceive)\b'
+
+    # Functions to interact with OneWire devices
+    - name: keyword.psf.onewire.vpl
+      match: '\b(owSearch|owTempGetID|owTempGet|owiButtonGetID|owiButtonReadData|owiButtonWriteData|owiButtonEnableLED|owiButtonSetLed|owSearchX|owQuery|owGetID|owGetFamily|owAccess|owRelease|owReadData|owWriteData|owRead|owReadBit|owWrite|owWriteBit|owAlarmSearch|owAlarmQuery|owAlarmGetID|owAlarmGetFamily|owAlarmAccess|owAlarmRelease)\b'
+
+    # Power management
+    - name: keyword.psf.power.management.vpl
+      match: '\b(pmPowerDown|pmDeepSleep|pmPowerFail|pmWaitEvent|pmSetVibrationsensitivity|pmVibration|pmSetSpeed)\b'
+
+    # RF Functions
+    - name: keyword.psf.rf.vpl
+      match: '\b(rfOpen|rfClose|rfReceive|rfSend|rfSetPower)\b'
+
+    # RFBC Functions
+    - name: keyword.psf.rfbc.vpl
+      match: '\b(rfbcPresent|rfbcOpen|rfbcClose|rfbcGetConfig|rfbcSetConfig|rfbcWaitEvent|rfbcPairRequestReceive|rfbcRawEventReceive|rfbcRawFilter|rfbcRawSend|rfbcRemoteControlEventReceive|rfbcSwitchEventReceive|rfbcTemperatureEventReceive|rfbcSensorEventReceive|rfbcSendAck|rfbcSendButtonPress|rfbcSetSwitchState)\b'
+
+    # Serial port
+    - name: keyword.psf.serial.vpl
+      match: '\b(serOpen|serClose|serSendChar|serSendString|serSendData|serFrameReceiver|serFrameReceiveDone|serFlush|serForceDataReady|serSetHandshake|serGetBufferLevel|serGetCTS|serSetRTS)\b'
+
+    # SMTP functions
+    - name: keyword.psf.smtp.vpl
+      match: '\b(smtpOpen|smtpClose|smtpSetConfig|smtpGetConfig|smtpSend|smtpNew|smtpAddText|smtpAddAttachment|smtpSendX|smtpCancel|smtpStatus|smtpAwaitCompletion)\b'
+
+    # GPRS/Socket functions
+    - name: keyword.psf.socket.vpl
+      match: '\b(sockConnect|sockConnection|sockDisconnect|sockGetLocalIP|sockIPFromName|sockIPToName|sockListen|sockReceive|sockSend|sockSetTCPIPParm|sockGetTCPIPParm)\b'
+
+    # UDP functions
+    - name: keyword.psf.udp.vpl
+      match: '\b(udpStartListen|udpStopListen|udpReceive|udpSend)\b'
+
+    # Application version functions
+    - name: keyword.psf.version.vpl
+      match: '\b(verSetAppProfile|verGetAppVersion|verGetAppName|verCheckUpgrade)\b'
+
+    # Functions for delivering Voice
+    - name: keyword.psf.voice.vpl
+      match: '\b(voiceTalk|voiceStop|voiceBusy)\b'
+
+    # Zero Power Functions
+    - name: keyword.psf.zero.power.vpl
+      match: '\b(zpPowerDown|zpBootEvent)\b'
+
+patterns:
+- {include: '#comments'}
+- {include: '#strings'}
+- {include: '#conditional-compilation'}
+- {include: '#vpl-keywords'}
+- {include: '#vpl-sfl-keywords'}
+- {include: '#vpl-psf-keywords'}
+...
