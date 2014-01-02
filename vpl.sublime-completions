@@ -1,0 +1,746 @@
+{
+  "scope": "source.vpl",
+  "completions":
+  [
+
+    //
+    // VPL Operators
+    //
+    // Operators
+     {"trigger": "INT", "contents": "INT($1)$0"}
+    ,{"trigger": "DINT", "contents": "DINT($1)$0"}
+    ,{"trigger": "SINT", "contents": "SINT($1)$0"}
+    ,{"trigger": "BOOL", "contents": "BOOL($1)$0"}
+    ,{"trigger": "FLOAT", "contents": "FLOAT($1)$0"}
+    ,{"trigger": "FLOATB", "contents": "FLOATB($1)$0"}
+    ,{"trigger": "ADDR", "contents": "ADDR($1)$0"}
+    ,{"trigger": "SIZEOF", "contents": "SIZEOF($1)$0"}
+    ,{"trigger": "ptr", "contents": "ptr($1)$0"}
+
+
+    //
+    // Standard functions and function blocks
+    //
+    // Binary Operations
+    ,{"trigger": "shl8",  "contents": "shl8(in:=$1, n:=$2)$0"}
+    ,{"trigger": "shl16", "contents": "shl16(in:=$1, n:=$2)$0"}
+    ,{"trigger": "shl32", "contents": "shl32(in:=$1, n:=$2)$0"}
+    ,{"trigger": "shr8",  "contents": "shr8(in:=$1, n:=$2)$0"}
+    ,{"trigger": "shr16", "contents": "shr16(in:=$1, n:=$2)$0"}
+    ,{"trigger": "shr32", "contents": "shr32(in:=$1, n:=$2)$0"}
+    ,{"trigger": "bcd_to_dint",  "contents": "bcd_to_dint(in:=$1)$0"}
+    ,{"trigger": "bcd_to_int", "contents": "bcd_to_int(in:=$1)$0"}
+    ,{"trigger": "bcd_to_sint", "contents": "bcd_to_sint(in:=$1)$0"}
+    ,{"trigger": "dint_to_bcd",  "contents": "dint_to_bcd(in:=$1)$0"}
+    ,{"trigger": "int_to_bcd", "contents": "int_to_bcd(in:=$1)$0"}
+    ,{"trigger": "sint_to_bcd", "contents": "sint_to_bcd(in:=$1)$0"}
+
+    // Calculation routines
+    ,{"trigger": "abs", "contents": "abs(v:=$1)$0"}
+    ,{"trigger": "min", "contents": "min(a:=$1, b:=$2)$0"}
+    ,{"trigger": "max", "contents": "max(a:=$1, b:=$2)$0"}
+    ,{"trigger": "VolumeHorizontalTank", "contents": "VolumeHorizontalTank(H:=$1, L:=$2, R:=$3)$0"}
+    ,{"trigger": "VolumeVerticalTank", "contents": "VolumeHorizontalTank(H:=$1, L:=$2, R:=$3)$0"}
+    ,{"trigger": "CRC16", "contents": "CRC16(buffer:=$1, length:=$2)$0"}
+    ,{"trigger": "crcCalculate", "contents": "crcCalculate(buffer:=$1, length:=$2)$0"}
+    ,{"trigger": "random", "contents": "random(lower:=$1, upper:=$2)$0"}
+    ,{"trigger": "calcPow", "contents": "calcPow(x:=$1, y:=$2)$0"}
+    ,{"trigger": "rdDecrypt128", "contents": "rdDecrypt128(key:=$1, buf_in:=$2, buf_out:=$3, out_len:=$4, blk:=$5)$0"}
+    ,{"trigger": "rdEncrypt128", "contents": "rdEncrypt128(key:=$1, buf_in:=$2, buf_out:=$3, out_len:=$4, blk:=$5)$0"}
+
+    // Channel functions
+    ,{"trigger": "chInit", "contents": "chInit(msgMax:=$1)$0"}
+    ,{"trigger": "chDestroy", "contents": "chDestroy(ch:=$1, flush:=$2)$0"}
+    ,{"trigger": "chStatus", "contents": "chStatus(ch:=$1)$0"}
+    ,{"trigger": "chRead", "contents": "chRead(ch:=$1, msg:=$2, lenmax:=$3)$0"}
+    ,{"trigger": "chWrite", "contents": "chWrite(ch:=$1, msg:=$2, len:=$3)$0"}
+    ,{"trigger": "chPeek", "contents": "chPeek(ch:=$1 ,msg:=$2, lenmax:=$3)$0"}
+
+    // Counter functionblocks
+    ,{"trigger": "CTD", "contents": "${1:counter}(pv:=$2, ld:=$3, cd:=$4)$0"}
+    ,{"trigger": "CTU", "contents": "${1:counter}(cu:=$2, r:=$3, pv:=$4)$0"}
+    ,{"trigger": "CTUD", "contents": "${1:counter}(cu:=$2, cd:=$3, ld:=$4, r:=$5, pv:=$6)$0"}
+    ,{"trigger": "PCT", "contents": "${1:counter}(pinput:=$2, ld:=$3, ncv:=$4)$0"}
+
+    // Datalogger
+    ,{"trigger": "logInitialize", "contents": "logInitialize(key:=$1, numlogvalues:=$2, numlogrecords:=$3)$0"}
+    ,{"trigger": "logClear", "contents": "logClear()$0"}
+    ,{"trigger": "logNext", "contents": "logNext()$0"}
+    ,{"trigger": "logPrev", "contents": "logPrev()$0"}
+    ,{"trigger": "logFirst", "contents": "logFirst()$0"}
+    ,{"trigger": "logLast", "contents": "logLast()$0"}
+    ,{"trigger": "logNumOfRecords", "contents": "logNumOfRecords()$0"}
+    ,{"trigger": "logMaxNumOfRecords", "contents": "logMaxNumOfRecords()$0"}
+    ,{"trigger": "logValuesPerRecord", "contents": "logValuesPerRecord()$0"}
+    ,{"trigger": "logIsInitialized", "contents": "logIsInitialized(key:=$1)$0"}
+    ,{"trigger": "logWrite", "contents": "${1:LogWriter}(tag:=$2, value[$3]:=$4)$0"}
+    ,{"trigger": "logReWrite", "contents": "${1:LogWriter}(tag:=$2, value[$3]:=$4)$0"}
+    ,{"trigger": "logReWriteTag", "contents": "logRewriteTag(tag:=$1)$0"}
+    ,{"trigger": "logRead", "contents": "${1:LogReader}"}
+    ,{"trigger": "logDestroy", "contents": "logDestroy()$0"}
+    ,{"trigger": "logGotoLinsec", "contents": "logGotoLinsec(linsec:=$1, forward:=$2)$0"}
+    ,{"trigger": "logSeek", "contents": "logSeek(tag:=$1, n:=$2)$0"}
+
+    // Debugger functions
+    ,{"trigger": "DebugMsg", "contents": "DebugMsg(message:=$1)$0"}
+    ,{"trigger": "DebugFmt", "contents": "DebugFmt(message:=$1,${2:, v1:=$3}${4:, v2:=$5}${6:, v3:=$7}${8:, v4:=$9})$0"}
+
+    // Edge triggers
+    ,{"trigger": "R_TRIG", "contents": "${1:trigger}(trig:=$2)$0"}
+    ,{"trigger": "F_TRIG", "contents": "${1:trigger}(trig:=$2)$0"}
+    ,{"trigger": "RF_TRIG", "contents": "${1:trigger}(trig:=$2)$0"}
+
+    // Floating-point Math functions
+    ,{"trigger": "cos", "contents": "cos(v:=$1)$0"}
+    ,{"trigger": "acos", "contents": "acos(v:=$1)$0"}
+    ,{"trigger": "sin", "contents": "sin(v:=$1)$0"}
+    ,{"trigger": "asin", "contents": "asin(v:=$1)$0"}
+    ,{"trigger": "tan", "contents": "tan(v:=$1)$0"}
+    ,{"trigger": "atan", "contents": "atan(v:=$1)$0"}
+    ,{"trigger": "atan2", "contents": "atan2(a:=$1, b:=$2)$0"}
+    ,{"trigger": "exp", "contents": "exp(v:=$1)$0"}
+    ,{"trigger": "exp2", "contents": "exp2(v:=$1)$0"}
+    ,{"trigger": "frexp", "contents": "frexp(v:=$1, exp:=$2)$0"}
+    ,{"trigger": "ldexp", "contents": "ldexp(a:=$1, b:=$2)$0"}
+    ,{"trigger": "log", "contents": "log(v:=$1)$0"}
+    ,{"trigger": "log2", "contents": "log2(v:=$1)$0"}
+    ,{"trigger": "log10", "contents": "log10(v:=$1)$0"}
+    ,{"trigger": "modf", "contents": "modf(v:=$1, intpart:=$2)$0"}
+    ,{"trigger": "sqrt", "contents": "sqrt(v:=$1)$0"}
+    ,{"trigger": "ceil", "contents": "ceil(v:=$1)$0"}
+    ,{"trigger": "floor", "contents": "floor(v:=$1)$0"}
+    ,{"trigger": "abs", "contents": "abs(v:=$1)$0"}
+    ,{"trigger": "fabs", "contents": "fabs(v:=$1)$0"}
+    ,{"trigger": "fmin", "contents": "fmin(a:=$1, b:=$2)$0"}
+    ,{"trigger": "fmax", "contents": "fmax(a:=$1, b:=$2)$0"}
+    ,{"trigger": "IsInf", "contents": "isInf(v:=$1)$0"}
+    ,{"trigger": "IsNaN", "contents": "isNaN(v:=$1)$0"}
+    ,{"trigger": "floatToStr", "contents": "floatToStr(v:=$1)$0"}
+    ,{"trigger": "strToFloat", "contents": "strToFloat(str:=$1)$0"}
+    ,{"trigger": "degToRad", "contents": "degToRad(v:=$1)$0"}
+    ,{"trigger": "radToDeg", "contents": "radToDeg(v:=$1)$0"}
+    ,{"trigger": "degToPosition", "contents": "degToPosition(v:=$1)$0"}
+    ,{"trigger": "positionToDeg", "contents": "positionToDeg(v:=$1)$0"}
+
+    // Miscellaneous
+    ,{"trigger": "Debounce", "contents": "${1:deb}(db_time:=$1, in:=$2)$0"}
+    ,{"trigger": "memcpy", "contents": "memcpy(dst:=$1, src:=$2, len:=$3)$0"}
+    ,{"trigger": "RS", "contents": "${1:flipflop}(S:=$2, R1:=$3)$0"}
+    ,{"trigger": "SR", "contents": "${1:flipflop}(S1:=$2, R:=$3)$0"}
+
+    // Mutex functions
+    ,{"trigger": "mxInit", "contents": "mxInit()$0"}
+    ,{"trigger": "mxDestroy", "contents": "mxDestroy(mx:=$1)$0"}
+    ,{"trigger": "mxStatus", "contents": "mxStatus(mx:=$1)$0"}
+    ,{"trigger": "mxLock", "contents": "mxLock(mx:=$1)$0"}
+    ,{"trigger": "mxUnlock", "contents": "mxUnlock(mx:=$1)$0"}
+
+    // Persistent memory
+    ,{"trigger": "SaveString", "contents": "SaveString(index:=$1, str:=$2)$0"}
+    ,{"trigger": "LoadString", "contents": "LoadString(index:=$1)$0"}
+    ,{"trigger": "SaveData", "contents": "SaveData(index:=$1, data:=$2, datasize:=$3)$0"}
+    ,{"trigger": "LoadData", "contents": "LoadData(index:=$1, data:=$2, datasize:=$3)$0"}
+    ,{"trigger": "SaveStringF", "contents": "SaveStringF(index:=$1, str:=$2)$0"}
+    ,{"trigger": "LoadStringF", "contents": "LoadStringF(index:=$1)$0"}
+    ,{"trigger": "SaveDataF", "contents": "SaveDataF(index:=$1, data:=$2, datasize:=$3)$0"}
+    ,{"trigger": "LoadDataF", "contents": "LoadDataF(index:=$1, data:=$2, datasize:=$3)$0"}
+    ,{"trigger": "SaveStringX", "contents": "SaveStringX(index:=$1, str:=$2)$0"}
+    ,{"trigger": "LoadStringX", "contents": "LoadStringX(index:=$1)$0"}
+    ,{"trigger": "SaveDataX", "contents": "SaveDataX(index:=$1, data:=$2, datasize:=$3)$0"}
+    ,{"trigger": "LoadDataX", "contents": "LoadDataX(index:=$1, data:=$2, datasize:=$3)$0"}
+    ,{"trigger": "GetFlashXSize", "contents": "GetFlashXSize()$0"}
+
+    // Functions for Real Time Clock
+    ,{"trigger": "clockGet", "contents": "${1:clock}()$0"}
+    ,{"trigger": "clockNow", "contents": "clockNow()$0"}
+    ,{"trigger": "clockSet", "contents": "clockSet(${1:Year:=$2}${3:, Month:=$4}${5:, Day:=$6}${7:, Hour:=$8}${9:, Minute:=$10}${11:, Second:=$12}${13:, Linsec:=$14})$0"}
+    ,{"trigger": "clockTimeToLinsec", "contents": "clockTimeToLinsec(${1:Year:=$2}${3:, Month:=$4}${5:, Day:=$6}${7:, Hour:=$8}${9:, Minute:=$10}${11:, Second:=$12})$0"}
+    ,{"trigger": "clockLinsecToTime", "contents": "${1:clock}(Linsec:=$2)$0"}
+    ,{"trigger": "clockAlarm", "contents": "${1:alarm}(${2:enable:=$3}${4:, Month:=$5}${6:, Day:=$7}${8:, Hour:=$9}${10:, Minute:=$11}${12:, Second:=$13})$0"}
+    ,{"trigger": "clockDayTimer", "contents": "${1:DayTimer}(${2:enable:=$3}${4:, start_hour:=$5}${6:, start_minute:=$7}${8:, start_second:=$9}${10:, stop_hour:=$11}${12:, stop_minute:=$13}${14:,stop_second:=$15})$0"}
+    ,{"trigger": "clockWeekTimer", "contents": "${1:WeekAlarm}(${2:enable:=$3}${4:, DayOfWeek:=$5}${6:, Hour:=$7}${8:, Minute:=$9}${10:, Second:=$11})$0"}
+
+    // Semaphore functions
+    ,{"trigger": "semInit", "contents": "semInit(initval:=$1)$0"}
+    ,{"trigger": "semDestroy", "contents": "semDestroy(sem:=$1)$0"}
+    ,{"trigger": "semWait", "contents": "semWait(sem:=$1, timeout:=$2)$0"}
+    ,{"trigger": "semSignal", "contents": "semSignal(sem:=$1)$0"}
+    ,{"trigger": "semValue", "contents": "semValue(sem:=$1)$0"}
+
+    // String handling functions
+    ,{"trigger": "strFormat", "contents": "strFormat(format:=$1${2:, v1:=$3}${4:, v2:=$5}${6:, v3:=$7}${8:, v4:=$9})$0"}
+    ,{"trigger": "strGetValues", "contents": "${1:extract}(str:=$2, format:=$3)$0"}
+    ,{"trigger": "strGetStrings", "contents": "${1:extract}(str:=$2, format:=$3)$0"}
+    ,{"trigger": "strToInt", "contents": "strToInt(str:=$1)$0"}
+    ,{"trigger": "strToDint", "contents": "strToDint(str:=$1)$0"}
+    ,{"trigger": "strToSint", "contents": "strToSint(str:=$1)$0"}
+    ,{"trigger": "strCompare", "contents": "strCompare(str1:=$1, str2:=$2, CheckCase:=$3)$0"}
+    ,{"trigger": "strConcat", "contents": "strConcat(str1:=$1, str2:=$2)$0"}
+    ,{"trigger": "strLeft", "contents": "strLeft(str:=$1, length:=$2)$0"}
+    ,{"trigger": "strRight", "contents": "strRight(str:=$1, length:=$2)$0"}
+    ,{"trigger": "strMid", "contents": "strMid(str:=$1, start:=$2, length:=$3)$0"}
+    ,{"trigger": "strLen", "contents": "strLen(str:=$1)$0"}
+    ,{"trigger": "strLookup", "contents": "${1:search}(str:=$2${3:, str1:=$4}${5:, str2:=$6}${7:, str3:=$8}${9:, str4:=$10})$0"}
+    ,{"trigger": "strFind", "contents": "strFind(str1:=$1, str2:=$2${3:, CheckCase:=$4})$0"}
+    ,{"trigger": "strToken", "contents": "strToken(str:=$1, delimiter:=$2, index:=$3)$0"}
+    ,{"trigger": "strRemoveSpaces", "contents": "strRemoveSpaces(str:=$1${2:, trailing:=$3}${4:, leading:=$5})$0"}
+    ,{"trigger": "sintToStr", "contents": "sintToStr(v:=$1)$0"}
+    ,{"trigger": "intToStr", "contents": "intToStr(v:=$1)$0"}
+    ,{"trigger": "dintToStr", "contents": "dintToStr(v:=$1)$0"}
+    ,{"trigger": "strToMemory", "contents": "strToMemory(dst:=$1, str:=$2, len:=$3)$0"}
+    ,{"trigger": "strFromMemory", "contents": "strFromMemory(src:=$1, len:=$2)$0"}
+    ,{"trigger": "strEncode64", "contents": "strEncode64(str:=$1)$0"}
+    ,{"trigger": "strDecode64", "contents": "strDecode64(str:=$1)$0"}
+    ,{"trigger": "strMemoryUsage", "contents": "strMemoryUsage(cnt_cur:=$1, cnt_peak:=$2, mem_cur:=$3, mem_peak:=$4)$0"}
+
+    // Timer functions
+    ,{"trigger": "TOF", "contents": "${1:timer}(${2:trig:=$3}${4:, pt:=$5})$0"}
+    ,{"trigger": "TON", "contents": "${1:timer}(${2:trig:=$3}${4:, pt:=$5})$0"}
+    ,{"trigger": "TP", "contents": "${1:timer}(${2:trig:=$3}${4:, pt:=$5})$0"}
+    ,{"trigger": "TPERIOD", "contents": "${1:timer}(${2:enable:=$3}${4:, low_period:=$5}${6:, high_period:=$7})$0"}
+
+
+    //
+    // Platform Support Functions
+    //
+    // 3D Accelerometer
+    ,{"trigger": "accOpen", "contents": "accOpen(${1:Mode:=$2})$0"}
+    ,{"trigger": "accClose", "contents": "accClose()$0"}
+    ,{"trigger": "accVector", "contents": "accVector(x:=$1, y:=$2, z:=$3)$0"}
+    ,{"trigger": "accVectorToForce", "contents": "accVectorToForce(x:=$1, y:=$2, z:=$3)$0"}
+    ,{"trigger": "accVectorToAngles", "contents": "accVectorToAngles(inX:=$1, inY:=$2, inZ:=$3, x:=$4, y:=$5, z:=$6)$0"}
+    ,{"trigger": "accWaitEvent", "contents": "accWaitEvent(timeout:=$1)$0"}
+    ,{"trigger": "accSetAccelerationEvent", "contents": "accSetAccelerationEvent(${1:Threshold:=$2}${3:, Duration:=$4}${5:, Once:=$6}${7:, Combined:=$8}${9:, XAbove:=$10}${11:, XBelow:=$12}${13:, YAbove:=$14}${15:, YBelow:=$16}${17:, ZAbove:=$18}${19:, ZBelow:=$20}${21:, Enable:=$22})$0"}
+    ,{"trigger": "accAccelerationEvent", "contents": "${1:acc}()$0"}
+    ,{"trigger": "accSetShockEvent", "contents": "accSetShockEvent(Threshold:=$1, Duration:=$2, Latency:=$3, Window:=$4, Once:=$5, X:=$6, Y:=$7, Z:=$8, Enable:=$9)$0"}
+    ,{"trigger": "accShockEvent", "contents": "${1:shock}()$0"}
+    ,{"trigger": "accLoggerSetConfig", "contents": "accLoggerSetConfig(Buffer:=$1${2:, Size:=$3}${4:, WarningLevel:=$5}${6:, DownSample:=$7}${8:, WarnIfFull:=$9}${10:, StopOnFull:=$11}${12:, StopOnShock:=$13}${14:, StopOnAcc:=$15})$0"}
+    ,{"trigger": "accLoggerGetConfig", "contents": "${1:cfg}()$0"}
+    ,{"trigger": "accLoggerStart", "contents": "accLoggerStart(reset:=$1)$0"}
+    ,{"trigger": "accLoggerStop", "contents": "accLoggerStop(${1:Event:=$2})$0"}
+    ,{"trigger": "accLoggerLevel", "contents": "accLoggerLevel()$0"}
+    ,{"trigger": "accLoggerRead", "contents": "${1:log}()$0"}
+    ,{"trigger": "accLoggerToMem", "contents": "accLoggerToMem(mem:=$1, size:=$2)$0"}
+
+    // Battery Functions
+    ,{"trigger": "batChargerEnable", "contents": "batChargerEnable(enable:=$1)$0"}
+    ,{"trigger": "batIsCharging", "contents": "batIsCharging()$0"}
+    ,{"trigger": "batVoltageIsLow", "contents": "batVoltageIsLow()$0"}
+    ,{"trigger": "batModuleMounted", "contents": "batModuleMounted()$0"}
+    ,{"trigger": "batSimpleCharger", "contents": "${1:batchg}()$0"}
+    ,{"trigger": "batChargerVoltage", "contents": "batChargerVoltage()$0"}
+    ,{"trigger": "batPowerLevel", "contents": "batPowerLevel()$0"}
+    ,{"trigger": "batConsumption", "contents": "batConsumption()$0"}
+    ,{"trigger": "batConsumptionAvg", "contents": "batConsumptionAvg()$0"}
+    ,{"trigger": "batConsumptionClear", "contents": "batConsumptionClear()$0"}
+    ,{"trigger": "batConsumptionEnable", "contents": "batConsumptionEnable(enable:=$1)$0"}
+    ,{"trigger": "batConsumptionTotal", "contents": "batConsumptionTotal()$0"}
+
+    // Board related functions
+    ,{"trigger": "boardSupplyVoltage", "contents": "boardSupplyVoltage()$0"}
+    ,{"trigger": "boardSupplyType", "contents": "boardSupplyType()$0"}
+    ,{"trigger": "boardTemperature", "contents": "boardTemperature()$0"}
+    ,{"trigger": "boardVersion", "contents": "boardVersion()$0"}
+    ,{"trigger": "boardType", "contents": "boardType()$0"}
+    ,{"trigger": "boardSerialNumber", "contents": "boardSerialNumber()$0"}
+    ,{"trigger": "boardReset", "contents": "boardReset()$0"}
+    ,{"trigger": "boardGetProfile", "contents": "boardGetProfile(index:=$1)$0"}
+    ,{"trigger": "boardGetProfileX", "contents": "boardGetProfileX(index:=$1)$0"}
+    ,{"trigger": "boardGetStatistics", "contents": "boardGetStatistics(index:=$1)$0"}
+    ,{"trigger": "boardWatchdog", "contents": "boardWatchdog(timeout:=$1)$0"}
+    ,{"trigger": "boardSetPassword", "contents": "boardSetPassword(curpsw:=$1, newpsw:=$2)$0"}
+    ,{"trigger": "boardSetPasswordAlt", "contents": "boardSetPasswordAlt(curpsw:=$1, newpsw:=$2)$0"}
+    ,{"trigger": "boardClearPassword", "contents": "boardClearPassword()$0"}
+    ,{"trigger": "boardSetFaultReset", "contents": "boardSetFaultReset(delay:=$1)$0"}
+    ,{"trigger": "boardBuzzer", "contents": "boardBuzzer(enable:=$1)$0"}
+    ,{"trigger": "boardBuzzerFrequency", "contents": "boardBuzzerFrequency(frequency:=$1)$0"}
+    ,{"trigger": "boardDCOut", "contents": "boardDCout(enable:=$1)$0"}
+    ,{"trigger": "boardDCOut2", "contents": "boardDCout2(enable:=$1)$0"}
+    ,{"trigger": "boardSetServicePortAlt", "contents": "boardSetServicePortAlt(port:=$1)$0"}
+    ,{"trigger": "boardFaultLogGet", "contents": "${1:read}()$0"}
+    ,{"trigger": "boardFaultLogGetDebug", "contents": "boardFaultLogGetDebug(index:=$1, filename:=$2, line:=$3, threadid:=$4)$0"}
+    ,{"trigger": "boardFaultLogClear", "contents": "boardFaultLogClear()$0"}
+    ,{"trigger": "boardEnableS0", "contents": "boardEnableS0(enable:=$1)$0"}
+    ,{"trigger": "boardSetOption", "contents": "boardSetOption(optionkey:=$1)$0"}
+    ,{"trigger": "boardRequestOption", "contents": "boardRequestOption(user:=$1, pass:=$2, options:=$3)$0"}
+
+    // Bluetooth Smart Antenna
+    ,{"trigger": "btOpen", "contents": "btOpen(${1:port:=$2}${3:, name:=$4})$0"}
+    ,{"trigger": "btClose", "contents": "btClose()$0"}
+    ,{"trigger": "btIsOpen", "contents": "btIsOpen()$0"}
+    ,{"trigger": "btSearch", "contents": "btSearch()$0"}
+    ,{"trigger": "btGetDeviceAddress", "contents": "btGetDeviceAddress(device:=$1)$0"}
+    ,{"trigger": "btGetDeviceName", "contents": "btGetDeviceName(device:=$1${2:, ID:=$3})$0"}
+    ,{"trigger": "btGetDeviceType", "contents": "btGetDeviceType(device:=$1)$0"}
+    ,{"trigger": "btConnect", "contents": "btConnect(device:=$1, Headset:=$2${3:, address:=$4}${5:, Pin:=$6})$0"}
+    ,{"trigger": "btListen", "contents": "btListen()$0"}
+    ,{"trigger": "btDisconnect", "contents": "btDisconnect(ID:=$1)$0"}
+    ,{"trigger": "btConnection", "contents": "${1:btCon}()$0"}
+    ,{"trigger": "btSignalLevel", "contents": "btSignalLevel(ID:=$1)$0"}
+    ,{"trigger": "btSendData", "contents": "btSendData(ID:=$1, Data:=$2, size:=$3)$0"}
+    ,{"trigger": "btReceiveData", "contents": "${1:btRX}()$0"}
+    ,{"trigger": "btSetPin", "contents": "btSetPin(pin:=$1)$0"}
+    ,{"trigger": "btHsOpen", "contents": "btHsOpen(Ring:=$1, RingCount:=$2)$0"}
+    ,{"trigger": "btHsClose", "contents": "btHsClose()$0"}
+    ,{"trigger": "btHsConnected", "contents": "btHsConnected()$0"}
+    ,{"trigger": "btHsRingAccept", "contents": "btHsRingAccept()$0"}
+    ,{"trigger": "btHsRingReject", "contents": "btHsRingReject()$0"}
+    ,{"trigger": "btPairClear", "contents": "btPairClear(address:=$1)$0"}
+    ,{"trigger": "btPairClearAll", "contents": "btPairClearAll()$0"}
+    ,{"trigger": "btSetLED", "contents": "btSetLED(color:=$1)$0"}
+
+    // Camera module
+    ,{"trigger": "camOpen", "contents": "camOpen(${1:port:=$2}${$3:, type:=$4})$0"}
+    ,{"trigger": "camClose", "contents": "camClose()$0"}
+    ,{"trigger": "camPresent", "contents": "camPresent()$0"}
+    ,{"trigger": "camSnapshot", "contents": "camSnapshot(res:=$1, pic:=$2, picsize:=$3)$0"}
+    ,{"trigger": "camSnapshotToFile", "contents": "camSnapshotToFile(res:=$1, filename:=$2)$0"}
+
+    // CAN functions
+    ,{"trigger": "canOpen", "contents": "canOpen(baud:=$1${2:, monitor:=$3})$0"}
+    ,{"trigger": "canClose", "contents": "canClose()$0"}
+    ,{"trigger": "canLoopBackMode", "contents": "canLoopBackMode(enable:=$1)$0"}
+    ,{"trigger": "canSendMessage", "contents": "canSendMessage(xtd:=$1, ID:=$2, data:=$3, datasize:=$4)$0"}
+    ,{"trigger": "canReceiveMessage", "contents": "${1:canRX}(data:=$2)$0"}
+    ,{"trigger": "canFilterCreate", "contents": "canFilterCreate(xtd:=$1, startID:=$2, length:=$3)$0"}
+    ,{"trigger": "canFilterCreateOnce", "contents": "canFilterCreateOnce(xtd:=$1, startID:=$2, length:=$3)$0"}
+    ,{"trigger": "canFilterCreateX", "contents": "canFilterCreateX(xtd:=$1, startid:=$2, length:=$3, changed:=$4, limit:=$5, timeout:=$6, change_hi_mask:=$7, change_lo_mask:=$8${9:, downsample:=$10}${11:, destination:=$12})$0"}
+    ,{"trigger": "canFilterDestroy", "contents": "canFilterDestroy(filterid:=$1)$0"}
+    ,{"trigger": "canFilterStatus", "contents": "canFilterStatus(filterid:=$1)$0"}
+    ,{"trigger": "canFlush", "contents": "canFlush()$0"}
+    ,{"trigger": "canBufferLevel", "contents": "canBufferLevel()$0"}
+    ,{"trigger": "canLoggerSetup", "contents": "canLoggerSetup(buffer:=$1, size:=$2)$0"}
+    ,{"trigger": "canLoggerStart", "contents": "canLoggerStart()$0"}
+    ,{"trigger": "canLoggerStop", "contents": "canLoggerStop()$0"}
+    ,{"trigger": "canLoggerLevel", "contents": "canLoggerLevel()$0"}
+    ,{"trigger": "canLoggerRead", "contents": "${1:canLog}(data:=$2)$0"}
+    ,{"trigger": "canLoggerToMemory", "contents": "canLoggerToMemory(dst:=$1, size:=$2)$0"}
+    ,{"trigger": "canFMSFilterCreate", "contents": "canFMSFilterCreate(PGN:=$1, changed:=$2, limit:=$3, timeout:=$4, change_hi_mask:=$5, change_lo_mask:=$6${7:, downsample:=$8}${9:, destination:=$10})$0"}
+    ,{"trigger": "canFMSGetPGN", "contents": "canFMSGetPGN(id:=$1)$0"}
+
+    // Display functions
+    ,{"trigger": "displayBox", "contents": "displayBox(x1:=$1, y1:=$2, x2:=$3, y2:=$4, fill:=$5${6:, color:=$7})$0"}
+    ,{"trigger": "displayCircle", "contents": "displayCircle(x:=$1, y:=$2, rad:=$3${4:, color:=$5})$0"}
+    ,{"trigger": "displayClear", "contents": "displayClear()$0"}
+    ,{"trigger": "displayDefineChar", "contents": "displayDefineChar(index:=$1, map:=$2)$0"}
+    ,{"trigger": "displayGetKey", "contents": "displayGetKey(timeout:=$1)$0"}
+    ,{"trigger": "displayImage", "contents": "displayImage(x:=$1, y:=$2, width:=$3, height:=$4, data:=$5)$0"}
+    ,{"trigger": "displayLine", "contents": "displayLine(x1:=$1, y1:=$2, x2:=$3, y2:=$4${5:, color:=$6})$0"}
+    ,{"trigger": "displayNumber", "contents": "displayNumber(number:=$1)$0"}
+    ,{"trigger": "displayPoint", "contents": "displayPoint(x:=$1, y:=$2${3:, color:=$4})$0"}
+    ,{"trigger": "displayPower", "contents": "displayPower(power:=$1)$0"}
+    ,{"trigger": "displayString", "contents": "displayString(message:=$1)$0"}
+    ,{"trigger": "displayXY", "contents": "displayXY(x:=$1, y:=$2)$0"}
+
+    // Functions for DTMF interaction
+    ,{"trigger": "dtmfGetKey", "contents": "dtmfGetKey(timeout:=$1)$0"}
+    ,{"trigger": "dtmfGetNumber", "contents": "dtmfGetNumber(timeout:=$1)$0"}
+
+    // Ethernet/Wi-Fi module
+    ,{"trigger": "ethOpen", "contents": "ethOpen()$0"}
+    ,{"trigger": "ethClose", "contents": "ethClose()$0"}
+    ,{"trigger": "ethPresent", "contents": "ethPresent()$0"}
+    ,{"trigger": "ethConnect", "contents": "ethConnect(ip:=$1, port:=$2)$0"}
+    ,{"trigger": "ethConnection", "contents": "${1:soccon}(${2:id:=$3})$0"}
+    ,{"trigger": "ethDisconnect", "contents": "ethDisconnect(id:=$1)$0"}
+    ,{"trigger": "ethSend", "contents": "ethSend(id:=$1, data:=$2, size:=$3)$0"}
+    ,{"trigger": "ethReceive", "contents": "${1:sockrcv}()$0"}
+
+    // File system functions
+    ,{"trigger": "fsMediaPresent", "contents": "fsMediaPresent(media:=$1)$0"}
+    ,{"trigger": "fsMediaWriteProtected", "contents": "fsMediaWriteProtected(media:=$1)$0"}
+    ,{"trigger": "fsMediaOpen", "contents": "fsMediaOpen(media:=$1)$0"}
+    ,{"trigger": "fsMediaClose", "contents": "fsMediaClose(media:=$1)$0"}
+    ,{"trigger": "fsMediaQuickFormat", "contents": "fsMediaQuickFormat(media:=$1)$0"}
+    ,{"trigger": "fsMediaEject", "contents": "fsMediaEject(media:=$1)$0"}
+    ,{"trigger": "fsStatusLEDEnable", "contents": "fsStatusLEDEnable(enable:=$1)$0"}
+    ,{"trigger": "fsDirCreate", "contents": "fsDirCreate(name:=$1)$0"}
+    ,{"trigger": "fsDirChange", "contents": "fsDirChange(path:=$1)$0"}
+    ,{"trigger": "fsDirCurrent", "contents": "fsDirCurrent()$0"}
+    ,{"trigger": "fsDirCatalog", "contents": "fsDirCatalog(index:=$1)$0"}
+    ,{"trigger": "fsDirDelete", "contents": "fsDirDelete(name:=$1)$0"}
+    ,{"trigger": "fsFileCreate", "contents": "fsFileCreate(name:=$1)$0"}
+    ,{"trigger": "fsFileOpen", "contents": "fsFileOpen(name:=$1)$0"}
+    ,{"trigger": "fsFileExists", "contents": "fsFileExists(name:=$1)$0"}
+    ,{"trigger": "fsFileRename", "contents": "fsFileRename(name_old:=$1, name_new:=$2)$0"}
+    ,{"trigger": "fsFileMove", "contents": "fsFileMove(src:=$1,dst:=$2)$0"}
+    ,{"trigger": "fsFileDelete", "contents": "fsFileDelete(name:=$1)$0"}
+    ,{"trigger": "fsFileStatus", "contents": "fsFileStatus(fd:=$1)$0"}
+    ,{"trigger": "fsFileGetCreateTime", "contents": "fsFileGetCreateTime(name:=$1)$0"}
+    ,{"trigger": "fsFileGetSize", "contents": "fsFileGetSize(name:=$1)$0"}
+    ,{"trigger": "fsFileSeek", "contents": "fsFileSeek(fd:=$1, offset:=$2)$1"}
+    ,{"trigger": "fsFilePosition", "contents": "fsFilePosition(fd:=$1)$0"}
+    ,{"trigger": "fsFileRead", "contents": "fsFileRead(fd:=$1, buffer:=$2, length:=$3)$0"}
+    ,{"trigger": "fsFileReadString", "contents": "fsFileReadString(fd:=$1)$0"}
+    ,{"trigger": "fsFileWrite", "contents": "fsFileWrite(fd:=$1, buffer:=$2, length:=$3)$0"}
+    ,{"trigger": "fsFileWriteString", "contents": "fsFileWriteString(fd:=$1, str:=$2)$0"}
+    ,{"trigger": "fsFileWriteStringNL", "contents": "fsFileWriteStringNL(fd:=$1, str:=$2)$0"}
+    ,{"trigger": "fsFileClose", "contents": "fsFileClose(fd:=$1)$0"}
+    ,{"trigger": "fsFileFlush", "contents": "fsFileFlush(fd:=$2)$0"}
+
+    // FTP Functions
+    ,{"trigger": "ftpOpen", "contents": "ftpOpen()$0"}
+    ,{"trigger": "ftpClose", "contents": "ftpClose()$0"}
+    ,{"trigger": "ftpConnect", "contents": "ftpConnect(Host:=$1${2:, Username:=$3}, Password:=$4${$5:, Port:=$6})$0"}
+    ,{"trigger": "ftpConnected", "contents": "ftpConnected(id:=$1)$0"}
+    ,{"trigger": "ftpDisconnect", "contents": "ftpDisconnect(id:=$1)$0"}
+    ,{"trigger": "ftpCancel", "contents": "ftpCancel(id:=$1)$0"}
+    ,{"trigger": "ftpLastResponse", "contents": "ftpLastResponse(id:=$1, response:=$2)$0"}
+    ,{"trigger": "ftpDirChange", "contents": "ftpDirChange(id:=$1, name:=$2)$0"}
+    ,{"trigger": "ftpDirCreate", "contents": "ftpDirCreate(id:=$1, name:=$2)$0"}
+    ,{"trigger": "ftpDirCurrent", "contents": "ftpDirCurrent(id:=$1)$0"}
+    ,{"trigger": "ftpDirDelete", "contents": "ftpDirDelete(id:=$1, name:=$2)$0"}
+    ,{"trigger": "ftpDirRename", "contents": "ftpDirRename(id:=$1, old_name:=$2, new_name:=$3)$0"}
+    ,{"trigger": "ftpDirCatalogGet", "contents": "ftpDirCatalogGet(id:=$1${2:, Name:=$3}${4:, Dir:=$5})$0"}
+    ,{"trigger": "ftpDirCatalog", "contents": "ftpDirCatalog(id:=$1, index:=$2, name:=$3, size:=$4)$0"}
+    ,{"trigger": "ftpFileDelete", "contents": "ftpFileDelete(id:=$1, name:=$2)$0"}
+    ,{"trigger": "ftpFileReceive", "contents": "ftpFileReceive(id:=$1, name:=$2, local:=$3)$0"}
+    ,{"trigger": "ftpFileRename", "contents": "ftpFileRename(id:=$1, old_name:=$2, new_name:=$3)$0"}
+    ,{"trigger": "ftpFileSend", "contents": "ftpFileSend(id:=$1, name:=$2, local:=$3)$0"}
+    ,{"trigger": "ftpFileSize", "contents": "ftpFileSize(id:=$1, name:=$2)$0"}
+
+    // Gateway functions
+    ,{"trigger": "gwConnected", "contents": "gwConnected()$0"}
+    ,{"trigger": "sockSetGWParm", "contents": "sockSetGWParm(GWEnabled:=$1, GWIP:=$2, GWKey:=$3, CryptKey:=$4${5:, GWPort:=$6}${7:, MaxConnectionAttempt:=$8}${9:, MaxSendReqAttempt:=$10}${11:, ResponseTimeout:=$12}${13:, AliveFreq:=$14})$0"}
+    ,{"trigger": "sockGetGWParm", "contents": "${1:gwParm}$0"}
+    ,{"trigger": "gwEnabled", "contents": "gwEnabled()$0"}
+    ,{"trigger": "gwPacketMode", "contents": "gwPacketMode(mode:=$1)$0"}
+    ,{"trigger": "gwReceivePacket", "contents": "${1:incoming}(${2:buffer:=$3}${4:, buffer:=$5})$0"}
+    ,{"trigger": "gwReceivePacketDone", "contents": "gwReceivePacketDone(reply:=$1)$0"}
+    ,{"trigger": "gwSendPacket", "contents": "gwSendPacket(receiver:=$1, buffer:=$2, length:=$3)$0"}
+    ,{"trigger": "gwSetMedia", "contents": "gwSetMedia(media:=$1)$0"}
+    ,{"trigger": "gwTimeGet", "contents": "gwTimeGet(UTC:=$1)$0"}
+
+    // GPRS functions
+    ,{"trigger": "gprsOpen", "contents": "gprsOpen()$0"}
+    ,{"trigger": "gprsClose", "contents": "gprsClose()$0"}
+    ,{"trigger": "gprsConnected", "contents": "gprsConnected()$0"}
+    ,{"trigger": "gprsSetModemInit", "contents": "gprsSetModemInit(init:=$1)$0"}
+    ,{"trigger": "gprsGetMonitorParm", "contents": "${1:gprscfg}()$0"}
+    ,{"trigger": "gprsSetMonitorParm", "contents": "gprsSetMonitorParm(Enabled:=$1${2:, MaxAttempt:=$3}${4:, AliveFreq:=$5})$0"}
+
+    // GPS Receiver
+    ,{"trigger": "gpsPower", "contents": "gpsPower(power:=$1)$0"}
+    ,{"trigger": "gpsFix", "contents": "${1:gps}()$0"}
+    ,{"trigger": "gpsPointInPolygon", "contents": "${1:checkPoly}(Position_X:=$2, Position_Y:=$3, Polygon_X[$4]:=$5, Polygon_Y[$6]:=$7, Corners:=$8)$0"}
+    ,{"trigger": "gpsEnableNMEA", "contents": "gpsEnableNMEA(port:=$1, enable:=$2)$0"}
+    ,{"trigger": "gpsDistance", "contents": "${1:gc}(lat1south:=$2, lat1deg:=$3, lat1min:=$4, lat1decmin:=$5, lon1west:=$6, lon1deg:=$7, lon1min:=$8, lon1decmin:=$9, lat2south:=$10, lat2deg:=$11, lat2min:=$12, lat2decmin:=$13, lon2west:=$14, lon2deg:=$15, lon2min:=$16, lon2decmin:=$17)$0"}
+    ,{"trigger": "gpsDistanceX", "contents": "${1:gc}(latitude1:=$2, longitude1:=$3, latitude2:=$4, longitude2:=$5)$0"}
+    ,{"trigger": "gpsGetAntennaStatus", "contents": "gpsGetAntennaStatus()$0"}
+    ,{"trigger": "gpsNMEA", "contents": "${1:nmea}()$0"}
+    ,{"trigger": "gpsSetSBAS", "contents": "gpsSetSBAS(enable:=$1)$0"}
+    ,{"trigger": "gpsGetSBAS", "contents": "gpsGetSBAS()$0"}
+    ,{"trigger": "gpsSetSpeedThreshold", "contents": "gpsSetSpeedThreshold(threshold:=$1)$0"}
+    ,{"trigger": "gpsUpdateFreq", "contents": "gpsUpdateFreq(mode:=$1)$0"}
+    ,{"trigger": "gpsPositionToUtm", "contents": "gpsPositionToUtm(lat:=$1, lon:=$2, zone:=$3, east:=$4, north:=$5)$0"}
+    ,{"trigger": "gpsUtmToPosition", "contents": "gpsUtmToPosition(zone:=$1, east:=$2, north:=$3, lat:=$4, lon:=$5)$0"}
+    ,{"trigger": "gpsSemicircleToUtm", "contents": "gpsSemicircleToUtm(lat:=$1, lon:=$2, zone:=$3, east:=$4, north:=$5)$0"}
+    ,{"trigger": "gpsUtmToSemicircle", "contents": "gpsUtmToSemicircle(zone:=$1, east:=$2, north:=$3, lat:=$4, lon:=$5)$0"}
+
+    // GSM functions
+    ,{"trigger": "gsmAnswer", "contents": "gsmAnswer()$0"}
+    ,{"trigger": "gsmOffHook", "contents": "gsmOffHook()$0"}
+    ,{"trigger": "gsmHangup", "contents": "gsmHangup()$0"}
+    ,{"trigger": "gsmIncomingCall", "contents": "${1:incoming}()$0"}
+    ,{"trigger": "gsmIncomingSMS", "contents": "${1:incoming}()$0"}
+    ,{"trigger": "gsmConnected", "contents": "gsmConnected()$0"}
+    ,{"trigger": "gsmSendSMS", "contents": "gsmSendSMS(phonenumber:=$1, message:=$2)$0"}
+    ,{"trigger": "gsmMakeCall", "contents": "gsmMakeCall(phonenumber:=$1, timeout:=$2)$0"}
+    ,{"trigger": "gsmMakeCallX", "contents": "gsmMakeCallX(phonenumber:=$1, CLIR:=$2, timeout:=$3)$0"}
+    ,{"trigger": "gsmPower", "contents": "gsmPower(power:=$1)$0"}
+    ,{"trigger": "gsmPowerLP", "contents": "gsmPowerLP(power:=$1)$0"}
+    ,{"trigger": "gsmSetAntennaMode", "contents": "gsmSetAntennaMode(mode:=$1)$0"}
+    ,{"trigger": "gsmSignalLevel", "contents": "gsmSignalLevel()$0"}
+    ,{"trigger": "gsmSendPDU", "contents": "gsmSendPDU(phonenumber:=$1, message:=$2, length:=$3, dcs:=$4)$0"}
+    ,{"trigger": "gsmIncomingPDU", "contents": "${1:incoming}(${2:message:=$3})$0"}
+    ,{"trigger": "gsmSetListOfCallers", "contents": "gsmSetListOfCallers(str:=$1)$0"}
+    ,{"trigger": "gsmGetListOfCallers", "contents": "gsmGetListOfCallers()$0"}
+    ,{"trigger": "gsmGetIMEI", "contents": "gsmGetIMEI()$0"}
+    ,{"trigger": "gsmGetIMSI", "contents": "gsmGetIMSI()$0"}
+    ,{"trigger": "gsmGetICCID", "contents": "gsmGetICCID()$0"}
+    ,{"trigger": "gsmSendDTMF", "contents": "gsmSendDTMF(number:=$1)$0"}
+    ,{"trigger": "gsmGetProviderList", "contents": "${1:provider}()$0"}
+    ,{"trigger": "gsmSetProvider", "contents": "gsmSetProvider(Provider:=$1)$0"}
+    ,{"trigger": "gsmSetPIN", "contents": "gsmSetPIN(pin:=$1)$0"}
+    ,{"trigger": "gsmSetSMSSCN", "contents": "gsmSetSMSSCN(number:=$1)$0"}
+    ,{"trigger": "gsmHeadset", "contents": "gsmHeadset(enable:=$1)$0"}
+    ,{"trigger": "gsmCheckSMS", "contents": "gsmCheckSMS()$0"}
+    ,{"trigger": "gsmGetLAC", "contents": "gsmGetLAC()$0"}
+    ,{"trigger": "gsmGetCellID", "contents": "gsmGetCellID()$0"}
+    ,{"trigger": "gsmGetStatus", "contents": "gsmGetStatus()$0"}
+    ,{"trigger": "gsmGetCurrentProvider", "contents": "gsmGetCurrentProvider()$0"}
+    ,{"trigger": "gsmGetHomeProvider", "contents": "gsmGetHomeProvider()$0"}
+    ,{"trigger": "gsmSIMPresent", "contents": "gsmSIMPresent()$0"}
+    ,{"trigger": "gsmSIMLocked", "contents": "gsmSIMLocked()$0"}
+    ,{"trigger": "gsmModemMode", "contents": "gsmModemMode(enable:=$1, baud:=$2, bit:=$3, parity:=$4, stopbit:=$5)$0"}
+    ,{"trigger": "gsmSendFlashSMS", "contents": "gsmSendFlashSMS(phonenumber:=$1, message:=$2)$0"}
+    ,{"trigger": "gsmSimSetPIN", "contents": "gsmSimSetPIN(enable:=$1, pin:=$2, pin_new:=$3)$0"}
+    ,{"trigger": "gsmNetworkTime", "contents": "gsmNetworkTime()$0"}
+
+    // Mobile Data Terminal
+    ,{"trigger": "mdtOpen", "contents": "mdtOpen(port:=$1)$0"}
+    ,{"trigger": "mdtPower", "contents": "mdtPower(power:=$1)$0"}
+    ,{"trigger": "mdtStandby", "contents": "mdtStandby(enable:=$1)$0"}
+    ,{"trigger": "mdtWrite", "contents": "mdtWrite(message:=$1)$0"}
+    ,{"trigger": "mdtGotoXY", "contents": "mdtGotoXY(x:=$1, y:=$2)$0"}
+    ,{"trigger": "mdtCurrentX", "contents": "mdtCurrentX()$0"}
+    ,{"trigger": "mdtCurrentY", "contents": "mdtCurrentY()$0"}
+    ,{"trigger": "mdtScrollDown", "contents": "mdtScrollDown()$0"}
+    ,{"trigger": "mdtScrollUp", "contents": "mdtScrollUp()$0"}
+    ,{"trigger": "mdtGetKey", "contents": "mdtGetKey(timeout:=$1)$0"}
+    ,{"trigger": "mdtClear", "contents": "mdtClear()$0"}
+    ,{"trigger": "mdtClearLine", "contents": "mdtClearLine()$0"}
+    ,{"trigger": "mdtCursor", "contents": "mdtCursor(enable:=$1)$0"}
+    ,{"trigger": "mdtBacklight", "contents": "mdtBacklight(intensity:=$1)$0"}
+    ,{"trigger": "mdtBeep", "contents": "mdtBeep()$0"}
+    ,{"trigger": "mdtContrast", "contents": "mdtContrast(intensity:=$1)$0"}
+    ,{"trigger": "mdtDefineChar", "contents": "mdtDefineChar(index:=$1, map:=$2)$0"}
+    ,{"trigger": "mdtProfile", "contents": "${1:mdtInfo}()$0"}
+
+    // Miscellaneous Functions
+    ,{"trigger": "Sleep", "contents": "Sleep(delay:=$1)$0"}
+    ,{"trigger": "DeepSleep", "contents": "DeepSleep(delay:=$1)$0"}
+    ,{"trigger": "PowerDown", "contents": "PowerDown(seconds:=$1)$0"}
+    ,{"trigger": "HostConnected", "contents": "HostConnected()$0"}
+    ,{"trigger": "memioWrite", "contents": "memioWrite(index:=$1, value:=$2)$0"}
+    ,{"trigger": "memioRead", "contents": "memioRead(index:=$1)$0"}
+    ,{"trigger": "memioWriteX", "contents": "memioWriteX(index:=$1, mem:=$2, len:=$3)$0"}
+    ,{"trigger": "memioReadX", "contents": "memioReadX(index:=$1, mem:=$2, len:=$3)$0"}
+
+    // MODBUS communication
+    ,{"trigger": "ioDeviceEnable", "contents": "ioDeviceEnable(net_id := 1, dev_addr := device, enable := FALSE)"}
+    ,{"trigger": "ioGetStatus", "contents": "ioGetStatus(net_id:=$1, dev_addr:=$2)$0"}
+    ,{"trigger": "ioSetMode", "contents": "ioSetMode(mode:=$1)$0"}
+    ,{"trigger": "ioSynchronize", "contents": "ioSynchronize()$0"}
+    ,{"trigger": "ioWaitException", "contents": "ioWaitException(net_id:=$1, timeout:=$2)$0"}
+    ,{"trigger": "modbusOpen", "contents": "modbusOpen(mode:=$1, unit_id:=$2${:3, port:=$4}${:5, baud:=$6}${:7, bit:=$8}${:9, parity:=$10}${:11, stopbit:=$12})$0"}
+    ,{"trigger": "modbusReceive", "contents": "${1:mbRcv}(net_id:=$2, frame:=$3, maxsize:=$4)$0"}
+    ,{"trigger": "modbusSend", "contents": "modbusSend(net_id:=$1, unit_id:=$2, frame:=$3, size:=$4)$0"}
+    ,{"trigger": "modbusWaitData", "contents": "modbusWaitData(net_id:=$1, timeout:=$2)$0"}
+
+    // MQTT communication
+    ,{"trigger": "mqttOpen", "contents": "mqttOpen(ip:=$1, port:=$2, username:=$3, password:=$4, clientid:=$5, ${6:keepalive:=$7, }clean:=$8, lwt_topic:=$9, lwt_message:=$10, lwt_retained:=$11, lwt_qos:=$12)$0"}
+    ,{"trigger": "mqttClose", "contents": "mqttClose(handle:=$1)$0"}
+    ,{"trigger": "mqttIsConnected", "contents": "mqttConnected(handle:=$1)$0"}
+    ,{"trigger": "mqttStatus", "contents": "mqttStatus(handle:=$1)$0"}
+    ,{"trigger": "mqttPublish", "contents": "mqttPublish(handle:=$1, topic:=$2, qos:=$3, retained:=$4, data:=$5, size:=$6)$0"}
+    ,{"trigger": "mqttSubscribe", "contents": "mqttSubscribe(handle:=$1, qos:=$2, topic:=$3)$0"}
+    ,{"trigger": "mqttUnsubscribe", "contents": "mqttUnsubscribe(handle:=$1, topic:=$2)$0"}
+    ,{"trigger": "mqttWaiEvent", "contents": "mqttWaitEvent(timeout:=$1)$0"}
+    ,{"trigger": "mqttReceive", "contents": "${1:mqttRX}(data:=$2, maxsize:=$3)$0"}
+
+    // Navigation
+    ,{"trigger": "navOpen", "contents": "navOpen(${1:port:=$2}${3:, unicode:=$4}${5:, baud:=$6})$0"}
+    ,{"trigger": "navClose", "contents": "navClose()$0"}
+    ,{"trigger": "navPresent", "contents": "navPresent()$0"}
+    ,{"trigger": "navVersion", "contents": "navVersion()$0"}
+    ,{"trigger": "navGetAPILevel", "contents": "navGetAPILevel()$0"}
+    ,{"trigger": "navDeviceSerial", "contents": "navDeviceSerial()$0"}
+    ,{"trigger": "navWaitEvent", "contents": "navWaitEvent(timeout:=$1)$0"}
+    ,{"trigger": "navSetUIText", "contents": "navSetUIText(id:=$1, text:=$2)$0"}
+    ,{"trigger": "navDeleteData", "contents": "navDeleteData(type:=$1)$0"}
+    ,{"trigger": "navFix", "contents": "${1:pos}()$0"}
+    ,{"trigger": "navUserIDAuthenticate", "contents": "navUserIDAuthenticate(accept:=$1)$0"}
+    ,{"trigger": "navUserIDReceive", "contents": "${1:userID}()$0"}
+    ,{"trigger": "navUserIDReceiveX", "contents": "${1:userID}()$0"}
+    ,{"trigger": "navUserIDRequest", "contents": "navUserIDRequest(index:=$1)$0"}
+    ,{"trigger": "navUserIDSet", "contents": "navUserIDSet(index:=$1, user:=$2)$0"}
+    ,{"trigger": "navUserStatusDefine", "contents": "navUserStatusDefine(id:=$1, text:=$2)$0"}
+    ,{"trigger": "navUserStatusDelete", "contents": "navUserStatusDelete(id:=$1)$0"}
+    ,{"trigger": "navUserStatusReceive", "contents": "${1:userStatus}()$0"}
+    ,{"trigger": "navUserStatusRcvX", "contents": "${1:userStatus}()$0"}
+    ,{"trigger": "navUserStatusRequest", "contents": "navUserStatusRequest(index:=$1)$0"}
+    ,{"trigger": "navUserStatusSet", "contents": "navUserStatusSet(index:=$1, id:=$2)$0"}
+    ,{"trigger": "navMessageSend", "contents": "navMessageSend(ID:=$1, text:=$2${3:, type:=$4}${5:, count:=$6}${7:, reply1:=$8}${9:, reply2:=$10}${11:, reply3:=$12}${13:, reply4:=$14}${15:, reply5:=$16}${17:, reply6:=$18}${19:, reply7:=$20}${21:, reply8:=$22}${23:, reply9:=$24}${25:, reply10:=$26})$0"}
+    ,{"trigger": "navMessageDelete", "contents": "navMessageDelete(id:=$1)$0"}
+    ,{"trigger": "navMessageStatusReceive", "contents": "${1:msgSts}()$0"}
+    ,{"trigger": "navMessageStatusRequest", "contents": "navMessageStatusRequest(id:=$1)$0"}
+    ,{"trigger": "navMessageReceive", "contents": "${1:msgRcv}()$0"}
+    ,{"trigger": "navMessageReceiveX", "contents": "${1:msgRcv}()$0"}
+    ,{"trigger": "navMessageQuickDefine", "contents": "navMessageQuickDefine(id:=$1, text:=$2)$0"}
+    ,{"trigger": "navMessageQuickDelete", "contents": "navMessageQuickDelete(id:=$1)$0"}
+    ,{"trigger": "navMessageReplyDefine", "contents": "navMessageReplyDefine(id:=$1, text:=$2)$0"}
+    ,{"trigger": "navMessageReplyDelete", "contents": "navMessageReplyDelete(id:=$1)$0"}
+    ,{"trigger": "navMessageReplyReceive", "contents": "${1:msgAck}()$0"}
+    ,{"trigger": "navStopSet", "contents": "navStopSet(id:=$1, latitude:=$2, longitude:=$3, text:=$4)$0"}
+    ,{"trigger": "navStopReceive", "contents": "${1:stopRcv}()$0"}
+    ,{"trigger": "navStopRequest", "contents": "navStopRequest(id:=$1)$0"}
+    ,{"trigger": "navStopSort", "contents": "navStopSort()$0"}
+    ,{"trigger": "navStopIndexSet", "contents": "navStopIndexSet(id:=$1, index:=$2)$0"}
+    ,{"trigger": "navStopSetActive", "contents": "navStopSetActive(id:=$1)$0"}
+    ,{"trigger": "navStopSetDone", "contents": "navStopSetDone(id:=$1)$0"}
+    ,{"trigger": "navStopDelete", "contents": "navStopDelete(id:=$1)$0"}
+    ,{"trigger": "navAutoArrival", "contents": "navAutoArrival(time:=$1, distance:=$2)$0"}
+    ,{"trigger": "navETAReceive", "contents": "${1:etaRcv}()$0"}
+    ,{"trigger": "navETARequest", "contents": "navETARequest()$0"}
+    ,{"trigger": "navETAAutoSet", "contents": "navETAAutoSet(freq:=$1)$0"}
+    ,{"trigger": "navGPITransfer", "contents": "navGPITransfer(filename:=$1, id:=$2)$0"}
+    ,{"trigger": "navGPIProgressReceive", "contents": "${1:gpiRcv}()$0"}
+    ,{"trigger": "navGPIRequestID", "contents": "navGPIRequestID()$0"}
+    ,{"trigger": "navGPIReceiveID", "contents": "navGPIReceiveID()$0"}
+    ,{"trigger": "navWaypointSet", "contents": "navWaypointSet(ID:=$1, symbol:=$2, latitude:=$3, longitude:=$4, categories:=$5, name:=$6)$0"}
+    ,{"trigger": "navWaypointDelete", "contents": "navWaypointDelete(id:=$1)$0"}
+    ,{"trigger": "navWaypointDeleteByCat", "contents": "navWaypointDeleteByCat(categories:=$1)$0"}
+    ,{"trigger": "navPositionToSemicircles", "contents": "navPositionToSemicircles(pos:=$1)$0"}
+    ,{"trigger": "navSemicirclesToPosition", "contents": "navSemicirclesToPosition(pos:=$1)$0"}
+
+    // Navigation and Messaging Platform
+    ,{"trigger": "nmpPresent", "contents": "nmpPresent()$0"}
+    ,{"trigger": "nmpUpdate", "contents": "nmpUpdate(filename:=$1, force:=$2)$0"}
+    ,{"trigger": "nmpUpdateProgressReceive", "contents": "${1:updRcv}()$0"}
+    ,{"trigger": "nmpPower", "contents": "nmpPower(power:=$1)$0"}
+    ,{"trigger": "nmpStopPopup", "contents": "nmpStopPopup(id:=$1, popup:=$2)$0"}
+    ,{"trigger": "nmpStopClose", "contents": "nmpStopClose(id:=$1, timeout:=$2)$0"}
+    ,{"trigger": "nmpPlaySound", "contents": "nmpPlaySound(loop:=$1, filename:=$2)$0"}
+    ,{"trigger": "nmpShowDialog", "contents": "nmpShowDialog(type:=$1, caption:=$2, message:=$3)$0"}
+    ,{"trigger": "nmpRemoveDialog", "contents": "nmpRemoveDialog()$0"}
+    ,{"trigger": "nmpDialogClickReceive", "contents": "${1:dialogClick}()$0"}
+    ,{"trigger": "nmpGetHardwareID", "contents": "nmpGetHardwareID()$0"}
+    ,{"trigger": "nmpHideMenus", "contents": "nmpHideMenus(menus:=$1)$0"}
+    ,{"trigger": "nmpHomePos", "contents": "nmpHomePos(lat:=$1, lon:=$2)$0"}
+    ,{"trigger": "nmpSetVolume", "contents": "nmpSetVolume(volume:=$1)$0"}
+    ,{"trigger": "nmpLCDBrightness", "contents": "nmpLCDBrightness(brightness:=$1)$0"}
+    ,{"trigger": "nmpSetLED", "contents": "nmpSetLED(led:=$1, state:=$2)$0"}
+    ,{"trigger": "nmpHardwareButtonsEnable", "contents": "nmpHardwareButtonsEnable(${1:enable:=$2, }${3:led_state:=$4})$0"}
+    ,{"trigger": "nmpHardwareButtonPressedReceive", "contents": "${1:hwButtonPress}()$0"}
+    ,{"trigger": "nmpCameraOpen", "contents": "nmpCameraOpen(id:=$1)$0"}
+    ,{"trigger": "nmpCameraClose", "contents": "nmpCameraClose(id:=$1)$0"}
+    ,{"trigger": "nmpRGBToDint", "contents": "nmpRGBToDint(r:=$1, g:=$2, b:=$3)$0"}
+    ,{"trigger": "nmpButtonsDefine", "contents": "nmpButtonsDefine(count:=$1)$0"}
+    ,{"trigger": "nmpButtonCreate", "contents": "nmpButtonCreate(id:=$1, text:=$2${3:, weight:=$4}${5:, visible:=$6}${7:, enable:=$8}${9:, max_width:=$10}${11:, color:=$12}${13:, night_color:=$14})$0"}
+    ,{"trigger": "nmpButtonEnable", "contents": "nmpButtonEnable(id:=$1, enable:=$2)$0"}
+    ,{"trigger": "nmpButtonVisible", "contents": "nmpButtonVisible(id:=$1, visible:=$2)$0"}
+    ,{"trigger": "nmpButtonWidth", "contents": "nmpButtonWidth(id:=$1, weight:=${2:1}, max_width:=${3:0})$0"}
+    ,{"trigger": "nmpButtonColor", "contents": "nmpButtonColor(id:=$1, color:=${2:-1}, night_color:=${3:-1})$0"}
+    ,{"trigger": "nmpButtonText", "contents": "nmpButtonText(id:=$1, text:=$2)$0"}
+    ,{"trigger": "nmpButtonFlash", "contents": "nmpButtonFlash(id:=$1, flash:=$2${3:, duration:=$4}${5:, period:=$6}${7:, color:=$8})$0"}
+    ,{"trigger": "nmpButtonConfirm", "contents": "nmpButtonConfirm(id:=$1, confirm:=$2, message:=$3)$0"}
+    ,{"trigger": "nmpButtonPressedReceive", "contents": "${1:buttonPress}()$0"}
+
+    // Functions to interact with OneWire devices
+    ,{"trigger": "owSearch", "contents": "owSearch(family:=$1)$0"}
+    ,{"trigger": "owTempGetID", "contents": "owTempGetID(Device:=$1)$0"}
+    ,{"trigger": "owTempGet", "contents": "owTempGet(device:=$1)$0"}
+    ,{"trigger": "owiButtonGetID", "contents": "owiButtonGetID()$0"}
+    ,{"trigger": "owiButtonReadData", "contents": "owiButtonReadData(index:=$1, data:=$2, size:=$3)$0"}
+    ,{"trigger": "owiButtonWriteData", "contents": "owiButtonWriteData(index:=$1, data:=$2, size:=$3)$0"}
+    ,{"trigger": "owiButtonEnableLED", "contents": "owiButtonEnableLED(enable:=$1)$0"}
+    ,{"trigger": "owiButtonSetLed", "contents": "owiButtonSetLED(state:=$1)$0"}
+    ,{"trigger": "owSearchX", "contents": "owSearchX(${1:, first:=$2}${3:, last:=$4}${5:, reset:=$6})$0"}
+    ,{"trigger": "owQuery", "contents": "owQuery(${1:family:=$2})$0"}
+    ,{"trigger": "owGetID", "contents": "owGetID(${1:family:=$2}${3:device:=$4})$0"}
+    ,{"trigger": "owGetFamily", "contents": "owGetFamily(${1:device:=$2})$0"}
+    ,{"trigger": "owAccess", "contents": "owAccess(${1:family:=$2}${3:device:=$4})$0"}
+    ,{"trigger": "owRelease", "contents": "owRelease()$0"}
+    ,{"trigger": "owReadData", "contents": "owReadData(data:=$1${2:size:=$3}${4:bitmode:=$5})$0"}
+    ,{"trigger": "owWriteData", "contents": "owWriteData(data:=$1${2:size:=$3}${4:bitmode:=$5})$0"}
+    ,{"trigger": "owRead", "contents": "owRead(data:=$1)$0"}
+    ,{"trigger": "owReadBit", "contents": "owReadBit(data:=$1)$0"}
+    ,{"trigger": "owWrite", "contents": "owWrite(data:=$1)$0"}
+    ,{"trigger": "owWriteBit", "contents": "owWriteBit(data:=$1)$0"}
+    ,{"trigger": "owAlarmSearch", "contents": "owAlarmSearch(first:=$1, last:=$2)$0"}
+    ,{"trigger": "owAlarmQuery", "contents": "owAlarmQuery()$0"}
+    ,{"trigger": "owAlarmGetID", "contents": "owAlarmGetID()$0"}
+    ,{"trigger": "owAlarmGetFamily", "contents": "owAlarmGetFamily()$0"}
+    ,{"trigger": "owAlarmAccess", "contents": "owAlarmAccess()$0"}
+    ,{"trigger": "owAlarmRelease", "contents": "owAlarmRelease()$0"}
+
+    // Power management
+    ,{"trigger": "pmPowerDown", "contents": "pmPowerDown(time:=$1)$0"}
+    ,{"trigger": "pmDeepSleep", "contents": "pmDeepSleep(delay:=$1)$0"}
+    ,{"trigger": "pmPowerFail", "contents": "pmPowerFail(bat:=$1)$0"}
+    ,{"trigger": "pmWaitEvent", "contents": "pmWaitEvent(Ignition:=${1:FALSE}, IgnitionFalling:=${2:FALSE}, DI1:=${3:FALSE}, DI1Falling:=${4:FALSE}, DI2:=${5:FALSE}, DI2Falling:=${6:FALSE}, DI3:=${7:FALSE}, DI3Falling:=${8:FALSE}, DI4:=${9:FALSE}, DI4Falling:=${10:FALSE}, Vibration:=${11:FALSE}, PowerFail:=${12:FALSE}, GSM:=${13:FALSE}, CAN:=${14:FALSE}, SER0:=${15:FALSE}, SER1:=${16:FALSE}, TIME:=${17:-1}, PowerApply:=${18:FALSE}, GPS:=${19:FALSE})$0"}
+    ,{"trigger": "pmSetVibrationsensitivity", "contents": "pmSetVibrationSensivity(sen:=$1)$0"}
+    ,{"trigger": "pmVibration", "contents": "pmVibration()$0"}
+    ,{"trigger": "pmSetSpeed", "contents": "pmSetSpeed(speed:=$1)$0"}
+
+    // RF Functions
+    ,{"trigger": "rfOpen", "contents": "rfOpen(id:=${1:-1}, baud:=${2:4800})$0"}
+    ,{"trigger": "rfClose", "contents": "rfClose()$0"}
+    ,{"trigger": "rfReceive", "contents": "rfReceive(size:=$1, timeout:=${2:5000}, data:=$3, sender:=$4, broadcast:=$5)$0"}
+    ,{"trigger": "rfSend", "contents": "rfSend(receiver:=$1, data:=$2, size:=$3)$0"}
+    ,{"trigger": "rfSetPower", "contents": "rfSetPower(power:=${1:5})$0"}
+
+    // RFBC Functions
+    ,{"trigger": "rfbcPresent", "contents": "rfbcPresent()$0"}
+    ,{"trigger": "rfbcOpen", "contents": "rfbcOpen()$0"}
+    ,{"trigger": "rfbcClose", "contents": "rfbcOpen()$0"}
+    ,{"trigger": "rfbcGetConfig", "contents": "rfbcGetConfig(id:=$1, serialnumber:=$2, pairmode:=$3, acknowledge:=$4)$0"}
+    ,{"trigger": "rfbcSetConfig", "contents": "rfbcSetConfig(id:=${1:0}, serialNumber:=${2:\"\"}, pairMode:=${3:0}, acknowledge:=${4:TRUE})$0"}
+    ,{"trigger": "rfbcWaitEvent", "contents": "rfbcWaitEvent(id:=$1, timeout:=${2:-1}, broadcast:=$3)$0"}
+    ,{"trigger": "rfbcPairRequestReceive", "contents": "rfbcPairRequestReceive(serialnumber:=$1)$0"}
+    ,{"trigger": "rfbcRawEventReceive", "contents": "rfbcRawEventReceive(datasize:=$1, data:=$2, length:=$3, number:=$4, flags:=$5, type:=$6)$0"}
+    ,{"trigger": "rfbcRawFilter", "contents": "rfbcRawFilter(start_id:=$1, end_id:=$2, flags:=$3, type:=$4)$0"}
+    ,{"trigger": "rfbcRawSend", "contents": "rfbcRawSend(id:=${1:0}, number:=${2:-1}, flags:=${3:0}, type:=${4:0}, datasize:=$5, data:=$6, wait:=${7:TRUE})$0"}
+    ,{"trigger": "rfbcRemoteControlEventReceive", "contents": "rfbcRemoteControlEventReceive(button:=$1, longPress:=$2, lowBattery:=$3)$0"}
+    ,{"trigger": "rfbcSwitchEventReceive", "contents": "rfbcSwitchEventReceive(ch:=$1, state:=$1)$0"}
+    ,{"trigger": "rfbcTemperatureEventReceive", "contents": "rfbcTemperatureEventReceive(temperature:=$1, humidity:=$2)$0"}
+    ,{"trigger": "rfbcSensorEventReceive", "contents": "rfbcSensorEventReceive(ch:=$1, v1:=$2, v2:=$3)$0"}
+    ,{"trigger": "rfbcSendAck", "contents": "rfbcSendAck()$0"}
+    ,{"trigger": "rfbcSendButtonPress", "contents": "rfbcSendButtonPress(id:=${1:0}, button:=${2:1}, long:=${3:FALSE}, low:=${4:FALSE})$0"}
+    ,{"trigger": "rfbcSetSwitchState", "contents": "rfbcSetSwitchState(id:=${1:0}, output:=${2:1}, State:=${3:TRUE})$0"}
+
+    // Serial port
+    ,{"trigger": "serOpen", "contents": "serOpen(port:=${1:0}, baud:=${2:9600}, bit:=${3:8}, parity:=${4:0}, stopbit:=${5:1}, rs485:=${6:FALSE})$0"}
+    ,{"trigger": "serClose", "contents": "serClose(port:=${1:0})$0"}
+    ,{"trigger": "serSendChar", "contents": "serSendChar(port:=${1:0}, ch:=$2)$0"}
+    ,{"trigger": "serSendString", "contents": "serSendString(port:=${1:0}, str:=$2)$0"}
+    ,{"trigger": "serSendData", "contents": "serSendData(port:=${1:0}, data:=$2, size:=$3, sof:=$4, eof:=$5, stuffch:=$6)$0"}
+    ,{"trigger": "serFrameReceiver", "contents": "${1:RX}(port:=${2:0}, enabled:=${3:FALSE}, frame:=$4, maxSize:=$5, sof:=$6, eof:=$7, stuffch:=$8)$0"}
+    ,{"trigger": "serFrameReceiveDone", "contents": "serFrameReceiveDone(port:=${1:0})$0"}
+    ,{"trigger": "serFlush", "contents": "serFlush(port:=${1:0})$0"}
+    ,{"trigger": "serForceDataReady", "contents": "serForceDataReady(port:=${1:0})$0"}
+    ,{"trigger": "serSetHandshake", "contents": "serSetHandshake(port:=${1:1}, RtsCts:=${2:FALSE})$0"}
+    ,{"trigger": "serGetBufferLevel", "contents": "serGetBufferLevel(port:=${1:0})"}
+    ,{"trigger": "serGetCTS", "contents": "serGetCTS(port:=${1:1})$0"}
+    ,{"trigger": "serSetRTS", "contents": "serSetRTS(port:=${1:1}, state:=$2)$0"}
+
+    // SMTP functions
+    ,{"trigger": "smtpOpen", "contents": "smtpOpen()$0"}
+    ,{"trigger": "smtpClose", "contents": "smtpClose()$0"}
+    ,{"trigger": "smtpSetConfig", "contents": "smtpSetConfig(IP:=$1, Port:=${2:25}, Sender:=$3, Authenticate:=$4, Username:=$5, Password:=$6)$0"}
+    ,{"trigger": "smtpGetConfig", "contents": "${1:smtpParm}()$0"}
+    ,{"trigger": "smtpSend", "contents": "smtpSend(Receiver:=$1, Receiver_cc:=$2, Subject:=$3, Message:=$4)$0"}
+    ,{"trigger": "smtpNew", "contents": "smtpNew(Receiver:=$1, Receiver_cc:=$2, Subject:=$3)$0"}
+    ,{"trigger": "smtpAddText", "contents": "smtpAddText(Handle:=$1, Message:=$2)$0"}
+    ,{"trigger": "smtpAddAttachment", "contents": "smtpAddAttachment(Handle:=$1, Filename:=$2)$0"}
+    ,{"trigger": "smtpSendX", "contents": "smtpSendX(Handle:=$1)$0"}
+    ,{"trigger": "smtpCancel", "contents": "smtpCancel(Handle:=$1)$0"}
+    ,{"trigger": "smtpStatus", "contents": "smtpStatus(Handle:=$1)$0"}
+    ,{"trigger": "smtpAwaitCompletion", "contents": "smtpAwaitCompletion(Handle:=$1)$0"}
+
+    // GPRS/Socket functions
+    ,{"trigger": "sockConnect", "contents": "sockConnect(ip:=$1, port:=$2)$0"}
+    ,{"trigger": "sockConnection", "contents": "${1:soccon}()$0"}
+    ,{"trigger": "sockDisconnect", "contents": "sockDisconnect(id:=$1)$0"}
+    ,{"trigger": "sockGetLocalIP", "contents": "sockGetLocalIP()$0"}
+    ,{"trigger": "sockIPFromName", "contents": "sockIPFromName(str:=$1)$0"}
+    ,{"trigger": "sockIPToName", "contents": "sockIPToName(ip:=$1)$0"}
+    ,{"trigger": "sockListen", "contents": "sockListen(ip:=$1, port:=$2)$0"}
+    ,{"trigger": "sockReceive", "contents": "${1:sockrcv}()$0"}
+    ,{"trigger": "sockSend", "contents": "sockSend(id:=$1, data:=$2, size:=$3)$0"}
+    ,{"trigger": "sockSetTCPIPParm", "contents": "sockSetTCPIPParm(IP:=${1:0}, SubnetMask:=${2:0}, Gateway:=${3:0}, DNS1:=${4:0}, DNS2:=${5:0}, Alive:=${6:0}, Username:=$7, Password:=$8, APN:=$9, Authenticate:=$10)$0"}
+    ,{"trigger": "sockGetTCPIPParm", "contents": "${1:gprsParm}()$0"}
+
+    // UDP functions
+    ,{"trigger": "udpStartListen", "contents": "udpStartListen(port:=$1, rip:=${2:0})$0"}
+    ,{"trigger": "udpStopListen", "contents": "udpStopListen(id:=$1)$0"}
+    ,{"trigger": "udpReceive", "contents": "${1:fbReceive}(id:=$2, data:=$3, maxsize:=$4)$0"}
+    ,{"trigger": "udpSend", "contents": "udpSend(ip:=$1, port:=$2, data:=$3, size:=$4)$0"}
+
+    // Application version functions
+    ,{"trigger": "verSetAppProfile", "contents": "verSetAppProfile(name:=$1, version:=$2)$0"}
+    ,{"trigger": "verGetAppVersion", "contents": "verGetAppVersion()$0"}
+    ,{"trigger": "verGetAppName", "contents": "verGetAppName()$0"}
+    ,{"trigger": "verCheckUpgrade", "contents": "${1:UpgChk}()$0"}
+
+    // Functions for delivering Voice
+    ,{"trigger": "voiceTalk", "contents": "voiceTalk(message:=$1, pause:=$2)"}
+    ,{"trigger": "voiceStop", "contents": "voiceStop()$0"}
+    ,{"trigger": "voiceBusy", "contents": "voiceBusy()$0"}
+
+    // Zero Power Functions
+    ,{"trigger": "zpPowerDown", "contents": "zpPowerDown(Time:=$1, Vibration:=$2)$0"}
+    ,{"trigger": "zpBootEvent", "contents": "zpBootEvent()$0"}
+  ]
+}

@@ -1,0 +1,9 @@
+<snippet>
+   <tabTrigger>struct</tabTrigger>
+   <scope>source.vpl</scope>
+   <content><![CDATA[
+STRUCT_BLOCK ${1:name}
+   ${2}
+END_STRUCT_BLOCK;
+]]></content>
+</snippet>

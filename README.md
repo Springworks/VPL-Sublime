@@ -24,6 +24,18 @@ Restart sublime. Now you should have the option for syntax highlight under
 view -> Syntax -> VPL (LogicIO RTCU)
 ```
 
+### Problem with inc-files
+Since .inc files are used in many languages, syntax definitions with a name before VPL will have priority. This can be fixed by installing the plugin [ApplySyntax](https://github.com/facelessuser/ApplySyntax). Then change the file `ApplySyntax.sublime-settings`. Add this beneath the other rules. Also, remove the .inc-files from the PHP/html rules. Because, who in their right mind names files .inc in php/html projects. Right? :D 
+
+```
+{
+    "name": "VPL/vpl",
+    "rules": [
+        {"file_name": ".*\\.(inc|vpl)$"}
+    ]
+}
+```
+
 ### Recompilation
 To recompile files in the project you need [AAAPackageDev](https://github.com/SublimeText/AAAPackageDev). After that you can change the build system in Sublime Text 2 to `Convert To...`.
 
@@ -32,8 +44,6 @@ The file you want to change when updating the Syntax Definitions is
 
 ### TODO
 
-* Add snippets for regularly used pieces of code.
-* Figure out how to auto detect the syntax based on file ending for .inc files.
 * Add make file so we can recompile the .tmLanguage-files.
 * Clean up the scopes after [Text Mates Naming Conventions](https://manual.macromates.com/en/language_grammars#naming_conventions)
 

@@ -1,0 +1,19 @@
+<snippet>
+   <tabTrigger>function</tabTrigger>
+   <scope>source.vpl</scope>
+   <content><![CDATA[
+FUNCTION ${1:functionName}${2: :} ${3:returnType};
+
+	VAR_INPUT
+		${4:inputVar}
+	END_VAR;
+
+	VAR_OUTPUT
+		${5:outputVar}
+	END_VAR;
+
+	${6}
+
+END_FUNCTION;
+]]></content>
+</snippet>

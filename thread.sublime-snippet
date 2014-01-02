@@ -1,0 +1,19 @@
+<snippet>
+   <tabTrigger>thread</tabTrigger>
+   <scope>source.vpl</scope>
+   <content><![CDATA[
+THREAD_BLOCK ${1:threadName};
+
+	VAR_INPUT
+		${2:inputVar}
+	END_VAR;
+
+	VAR_OUTPUT
+		${3:outputVar}
+	END_VAR;
+
+	${4}
+
+END_THREAD_BLOCK;
+]]></content>
+</snippet>

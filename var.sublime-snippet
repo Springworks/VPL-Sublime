@@ -1,0 +1,9 @@
+<snippet>
+   <tabTrigger>var</tabTrigger>
+   <scope>source.vpl</scope>
+   <content><![CDATA[
+VAR
+   ${1}
+END_VAR;
+]]></content>
+</snippet>

@@ -1,0 +1,9 @@
+<snippet>
+   <tabTrigger>for</tabTrigger>
+   <scope>source.vpl</scope>
+   <content><![CDATA[
+FOR ${1:a} := ${2:1} TO ${3:100} BY ${4:1} DO
+   ${5:// statement}
+END_FOR;
+]]></content>
+</snippet>

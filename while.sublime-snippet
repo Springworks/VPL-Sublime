@@ -1,0 +1,9 @@
+<snippet>
+   <tabTrigger>while</tabTrigger>
+   <scope>source.vpl</scope>
+   <content><![CDATA[
+WHILE ${1:a} ${2:<} ${3:100} DO
+   ${4:// statement}
+END_WHILE;
+]]></content>
+</snippet>
